@@ -11,17 +11,25 @@ int nrzar,numar,numarpc,rezultat,rezultatpc,jetoane=50,jetoanep,jetoanea,con;
 int main()
 {
 	cout << "Bine ai venit!"<< "\n";
-	 
-	
 
-		while (jetoane > 0)
-		{
+
+	while (jetoane > 0)
+	{
 			cout << "Ai " << jetoane << " de jetoane in cont." << "\n";
 
 			cout << "Alege numarul de jetoane pe care vrei sa le pariezi: ";
 
 			cin >> jetoanep;
 
+			if (jetoanep > jetoane)  //In cazul in care numarul de jetoane pariate depaseste numarul de jetoane detinute programul pariaza automat toate jetoanele din cont
+			{
+
+				cout << "Numarul de jetoane pariate introdus e mai mare decat numarul de jetoane detinute!" <<"\n"<< "Ai pariat all in."<<"\n";
+				
+				jetoanep = jetoane;
+			}
+			
+			
 			jetoane -= jetoanep;
 
 			cout << "Introdu de la tastatura numarul de zaruri cu care vrei sa arunci: "; //se specifica numarul de zaruri aruncate
@@ -49,12 +57,13 @@ int main()
 
 			rezultatpc = rand() % numarpc + 1;
 
+			//Se compara rezultatele pentru a stabili castigatorul 
+															
 
 
 
-
-			if (rezultat > rezultatpc)
-			{				//Se compara rezultatele pentru a stabili castigatorul
+			if (rezultat > rezultatpc)   //numarului de jetoane din cont i se adauga dublul pariului
+			{				
 
 				jetoane += jetoanep * 2;
 
@@ -62,10 +71,11 @@ int main()
 
 
 			}
-			if (rezultat == rezultatpc)
+			if (rezultat == rezultatpc) //numarului de jetoane i se adauga pariul
 			{
 
-				jetoane += jetoanep;
+				jetoane += jetoanep; 
+
 
 				cout << "\n" << "Tu si oponentul tau ati obtinut " << rezultat << "." << "\n";
 
@@ -78,7 +88,7 @@ int main()
 
 
 
-			if (jetoane == 0)
+			if (jetoane == 0) 
 			{
 				cout <<"\n"<< "Ai ramas fara jetoane. " << "\n" << "Daca vrei sa mai introduci jetoane introdu tasta 1, daca vrei sa te opresti aici introdu tasta 2. " ;
 
